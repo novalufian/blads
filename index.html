@@ -16,7 +16,7 @@
             background: peru;
         }
         #cs-ads ul li img {
-            width: 50px;
+            width: 50px !important;
             height: 50px;
             margin-right: 20px;
         }
@@ -40,14 +40,15 @@
     
     <div id="cs-ads"></div>
     <script>
-        function blads(targetid,paylooad) {
+        function blads(targetid,id) {
             var _target = document.getElementById(targetid);
+            _target.innerHTML = ``;
             
             // fetch('http://localhost:3000/html')
             // .then(res=>res.json())
             // .then(json=>console.log(json));
             
-            fetch('http://localhost:3000/html')
+            fetch('http://localhost:3000/cart/user/' + id)
             .then(res => {
                 return res.text();
             })
@@ -60,7 +61,18 @@
         var setting = {
             "uid" : "123"
         }
-        blads("cs-ads",)
+        blads("cs-ads", 234234)
     </script>
+
+    flow 
+    <br>
+    <br>
+    <br>
+    client : send data menggunakan function blads(target-adunit, payload)
+    <br>
+    server : receive data dan send response
+    <br>
+    client : render response ke html tag
+    
 </body>
 </html>

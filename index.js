@@ -1,14 +1,20 @@
 const express = require('express');
 const faker = require('faker');
-var cors = require('cors');
+const cors = require('cors');
+const path = require('path');
 const app = express();
 const port = 3000;
 
 app.use(cors());
+app.set('view engine', 'jade');
+
+app.get('/', (req, res) =>{
+    res.sendFile(path.join(__dirname+'/index.html'));
+})
 
 app.get('/cart/user/:id', (req, res) => {
 //   res.send(carts(req.params.id));
-  generateHtml(req.params.id);
+  res.send(generateHtml(req.params.id))
 })
 
 app.get('/html', (req, res) => {
